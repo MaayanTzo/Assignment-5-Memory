@@ -1,13 +1,39 @@
-html {
-    height: 100%;
-}
+
 body {
     margin: 0;
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 100vh;
 }
 .card {
     border: 1px solid black;
-    height: 100px;
+    height: 50px;
+}
+.anon {
+    background-image: url('../images/question.jpg');
+    background-size: contain;
+}
+.flash {
+    background-image: url('../images/flash.jpg');
+    background-size: cover;
+}
+.wonderwoman {
+    background-image: url('../images/wonderwoman.jpg');
+    background-size: cover;
+}
+.marvel {
+    background-image: url('../images/marvel.jpg');
+    background-size: cover;
+}
+.spiderman {
+    background-image: url('../images/spiderman.jpg');
+    background-size: cover;
+}
+.ironman {
+    background-image: url('../images/ironman.jpg');
+    background-size: cover;
+}
+.hulk {
+    background-image: url('../images/hulk.jpg');
+    background-size: cover;
 }
