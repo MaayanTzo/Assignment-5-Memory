@@ -37,28 +37,34 @@ var cardMatches = superHeroes.concat(superHeroes);
 
 //shuffle the cards:
 
-cardMatches.sort (function(a,b) {
+cardMatches.sort(function (a, b) {
     return 0.5 - Math.random();
 });
 
 //create new card for each object and set image, reveal image when card is clicked:
 
-$.each(cardMatches, function(index,value){
+$.each(cardMatches, function (index, value) {
     console.log(value);
-    var newCard=$("<div />");
+    var newCard = $("<div />");
     newCard.addClass("col-xs-6 col-md-3 card anon");
     newCard.data("name", cardMatches[index]["name"]);
-    var heroClass=cardMatches[index]["class"];
+    var heroClass = cardMatches[index]["class"];
     newCard.addClass("card");
     newCard.addClass(heroClass);
     newCard.toggleClass(heroClass);
-    //newCard.css("background-image", cardMatches[index]["img"]);
-    //newCard.css("background-size", "cover");
     $(".row").append(newCard);
-    newCard.on("click", function() {
+    //toggle the class when card is clicked:
+    function revealCard() {
         $(this).toggleClass("anon");
         $(this).toggleClass(heroClass);
-    })
+        var that = $(this);
+        //flip the card back over after one second:
+        setTimeout(function () {
+            that.toggleClass("anon");
+            that.toggleClass(heroClass);
+        }, 1000);
+    }
+    newCard.on("click", revealCard);
 });
 
 
