@@ -1,6 +1,6 @@
 
-.match {
-    border: 1px solid red;
+.notouch {
+    pointer-events: none;
 }
 body {
     margin: 0;
@@ -11,10 +11,6 @@ body {
 .card {
     border: 1px solid black;
     height: 50px;
-}
-.anon {
-    background-image: url('../images/question.jpg');
-    background-size: contain;
 }
 .flash {
     background-image: url('../images/flash.jpg');
@@ -39,4 +35,8 @@ body {
 .hulk {
     background-image: url('../images/hulk.jpg');
     background-size: cover;
+}
+.anon {
+    background-image: url('../images/question.jpg');
+    background-size: contain;
 }

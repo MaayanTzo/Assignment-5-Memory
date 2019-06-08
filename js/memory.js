@@ -58,34 +58,12 @@ $.each(cardMatches, function (index, value) {
     //toggle the class to reveal image when card is clicked:
     function revealCard() {
         $(this).toggleClass("anon");
-        $(this).toggleClass(heroClass);
-        $(this).toggleClass("show");
+        $(this).addClass(heroClass);
         var that = $(this);
     }
     newCard.on("click", revealCard);
 });
 
-/*
-function revealCard(heroClass) {
-    //if (count<2) {
-    //    count++;
-    $(this).toggleClass("anon");
-    $(this).toggleClass(heroClass);
-    $(this).toggleClass("show");
-    //}
-    var that = $(this);
-    //flip the card back over after one second:
-    setTimeout(function () {
-        that.toggleClass("anon");
-        that.toggleClass(heroClass);
-    }, 2000);
-}
-$(".card").on("click", revealCard);
-
-*/
-
-
-//var fullDeck = $(".card");
 
 //set count to 0 and guess to blank:
 
@@ -121,11 +99,20 @@ $(".row").on("click", function (event) {
                 setTimeout(cardsMatch,2000);
                 setTimeout(resetCount,2000);
             } else {
+                $(".card").addClass("notouch");
+                setTimeout(allowClick, 2000);
+                setTimeout(flipCardBackOver, 2000);
                 setTimeout(resetCount,2000);
             }
         }
     }
 })
+function allowClick() {
+    $(".card").removeClass("notouch");
+}
+function flipCardBackOver() {
+    $(".selected").toggleClass("anon");
+}
 
 function cardsMatch() {
     $.each($(".selected"), function () {
