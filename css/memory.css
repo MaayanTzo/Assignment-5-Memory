@@ -2,6 +2,25 @@
 .notouch {
     pointer-events: none;
 }
+#overlay {
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    background-image: url('../images/win.jpg');
+    background-size: contain;
+    visibility: hidden;
+}
+#startOver {
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 body {
     margin: 0;
     display: flex;

@@ -70,6 +70,7 @@ $.each(cardMatches, function (index, value) {
 var count = 0;
 var firstGuess="";
 var secondGuess="";
+var previousGuess= null;
 
 //function to reset count to 0 and guesses to blank, remove selected class:
 
@@ -79,6 +80,8 @@ function resetCount() {
     count=0;
     $(".selected").removeClass("selected");
 }
+
+//function to only flip two cards at a time and check if theyre matched:
 
 $(".row").on("click", function (event) {
     var clicked = $(event.target);
@@ -96,6 +99,8 @@ $(".row").on("click", function (event) {
         }
         if (firstGuess !=="" && secondGuess !=="") {
             if (firstGuess === secondGuess) {
+                $(".card").addClass("notouch");
+                setTimeout(allowClick, 2000);
                 setTimeout(cardsMatch,2000);
                 setTimeout(resetCount,2000);
             } else {
@@ -105,19 +110,39 @@ $(".row").on("click", function (event) {
                 setTimeout(resetCount,2000);
             }
         }
+        previousGuess = clicked;
     }
 })
+
+//no ability to click when two unmatched cards are flipped:
 function allowClick() {
     $(".card").removeClass("notouch");
 }
+
+//flip unmatched cards back over:
 function flipCardBackOver() {
     $(".selected").toggleClass("anon");
 }
+
+//indicate when two cards are a match:
 
 function cardsMatch() {
     $.each($(".selected"), function () {
         $(".selected").addClass("match");
     });
+    setTimeout(newGame,10);
+}
 
+//if user wins, start new game:
+
+function newGame() {
+    if ($(".card").length == $(".match").length) {
+        $("#overlay").css("visibility","visible");
+        $("#startOver").css("visibility","visible");
+        function startOver() {
+            console.log("startover");
+        }
+        $("#startOver").on("click",startOver);
+    }
 }
 
