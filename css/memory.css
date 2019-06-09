@@ -24,12 +24,16 @@
 body {
     margin: 0;
     display: flex;
-    align-items: center;
     height: 100vh;
+    align-items: center;
+    background-image: url('../images/background2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .card {
-    border: 1px solid black;
-    height: 50px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 3px solid black;
 }
 .flash {
     background-image: url('../images/flash.jpg');
@@ -38,6 +42,7 @@ body {
 .wonderwoman {
     background-image: url('../images/wonderwoman.jpg');
     background-size: cover;
+    padding: 5px 5px 5px 5px;
 }
 .marvel {
     background-image: url('../images/marvel.jpg');
@@ -58,4 +63,15 @@ body {
 .anon {
     background-image: url('../images/question.jpg');
     background-size: contain;
+}
+@media only screen and (max-width: 780px) {
+body{
+    height: 100%;
+}
+.mine {
+    height: 100vh;
+}
+.card {
+    height: 70px;
+}
 }

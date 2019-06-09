@@ -46,14 +46,12 @@ cardMatches.sort(function (a, b) {
 $.each(cardMatches, function (index, value) {
     //console.log(value);
     var newCard = $("<div />");
-    newCard.addClass("col-xs-6 col-md-3 card anon");
+    newCard.addClass("col-xs-6 col-sm-3 card anon");
     newCard.data("name", cardMatches[index]["name"]);
     var heroClass = cardMatches[index]["class"];
     newCard.addClass("card");
     newCard.addClass(heroClass);
     newCard.toggleClass(heroClass);
-    //newCard.css("margin", "5px 5px 0px 0px");
-    //newCard.css("box-sizing", "border-box");
     $(".row").append(newCard);
     //toggle the class to reveal image when card is clicked:
     function revealCard() {
@@ -68,16 +66,16 @@ $.each(cardMatches, function (index, value) {
 //set count to 0 and guess to blank:
 
 var count = 0;
-var firstGuess="";
-var secondGuess="";
-var previousGuess= null;
+var firstGuess = "";
+var secondGuess = "";
+var previousGuess = null;
 
 //function to reset count to 0 and guesses to blank, remove selected class:
 
 function resetCount() {
-    firstGuess="";
-    secondGuess="";
-    count=0;
+    firstGuess = "";
+    secondGuess = "";
+    count = 0;
     $(".selected").removeClass("selected");
 }
 
@@ -90,24 +88,24 @@ $(".row").on("click", function (event) {
     }
     if (count < 2) {
         count++;
-        if (count ===1) {
-            firstGuess=clicked.data("name");
+        if (count === 1) {
+            firstGuess = clicked.data("name");
             clicked.addClass("selected");
         } else {
-            secondGuess=clicked.data("name");
+            secondGuess = clicked.data("name");
             clicked.addClass("selected");
         }
-        if (firstGuess !=="" && secondGuess !=="") {
+        if (firstGuess !== "" && secondGuess !== "") {
             if (firstGuess === secondGuess) {
                 $(".card").addClass("notouch");
-                setTimeout(allowClick, 2000);
-                setTimeout(cardsMatch,2000);
-                setTimeout(resetCount,2000);
+                setTimeout(allowClick, 1000);
+                setTimeout(cardsMatch, 1000);
+                setTimeout(resetCount, 1000);
             } else {
                 $(".card").addClass("notouch");
-                setTimeout(allowClick, 2000);
-                setTimeout(flipCardBackOver, 2000);
-                setTimeout(resetCount,2000);
+                setTimeout(allowClick, 1000);
+                setTimeout(flipCardBackOver, 1000);
+                setTimeout(resetCount, 1000);
             }
         }
         previousGuess = clicked;
@@ -130,15 +128,15 @@ function cardsMatch() {
     $.each($(".selected"), function () {
         $(".selected").addClass("match");
     });
-    setTimeout(newGame,10);
+    setTimeout(newGame, 10);
 }
 
 //if user wins, start new game:
 
 function newGame() {
     if ($(".card").length == $(".match").length) {
-        $("#overlay").css("visibility","visible");
-        $("#startOver").css("visibility","visible");
+        $("#overlay").css("visibility", "visible");
+        $("#startOver").css("visibility", "visible");
         function startOver() {
             document.location.reload();
         }
