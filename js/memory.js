@@ -140,9 +140,9 @@ function newGame() {
         $("#overlay").css("visibility","visible");
         $("#startOver").css("visibility","visible");
         function startOver() {
-            console.log("startover");
+            document.location.reload();
         }
-        $("#startOver").on("click",startOver);
+        $("#startOver").on("click", startOver);
     }
 }
 
